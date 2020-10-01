@@ -52,9 +52,9 @@ class DigitalHouseManager {
 
     //Funções Professor
     fun registraProfAdjunto(nome: String, sobrenome: String, codigoProfessor: Int, qtdeHoras: Int) {
-        val adj = ProfessorAdjunto(nome, sobrenome, 0, codigoProfessor, qtdeHoras)
-        listaProfessores.add(adj)
-        println("Professor Adjunto Registrado com o código:  ${adj.codigoProfessor}")
+        val adjunto = ProfessorAdjunto(nome, sobrenome, tempoDeCasa = 0, codigoProfessor, qtdeHoras)
+        listaProfessores.add(adjunto)
+        println("Professor Adjunto Registrado com o código:  ${adjunto.codigoProfessor}")
     }
 
     fun registrarProfTitular(nome: String, sobrenome: String, codigoProfessor: Int, especialidade: String) {
@@ -63,14 +63,9 @@ class DigitalHouseManager {
         println("Professor Titular registrado com o código:  ${titular.codigoProfessor}")
     }
 
-    fun excluiProf(codigoProfessor: Int) {
-        for (professor in listaProfessores) {
-            if (professor.codigoProfessor == codigoProfessor){
-                listaProfessores.remove(professor)
-                println("Professor $professor removido com sucesso.")
-
-            }
-        }
+    fun excluiProf(codigoProfessor: Int){
+        listaProfessores.removeAll{ it.codigoProfessor == codigoProfessor }
+        println("Professor com código $codigoProfessor excluído com êxito.")
     }
 
     fun alocarProf(codigoCurso: Int, codProfTitulares: Int, codProfAdjuntos: Int) {
@@ -80,8 +75,10 @@ class DigitalHouseManager {
                     if (curso.codigoCurso == codigoCurso) {
                         professor as ProfessorTitular
                         curso.profTitular == professor
-                        println("Professor Titular foi Alocado.")
-                    } else if (professor.codigoProfessor == codProfAdjuntos) {
+                        println("Professor Titular foi Alocado.")}
+                }
+            }
+            if (professor.codigoProfessor == codProfAdjuntos) {
                         for (curso in cursos) {
                             if (curso.codigoCurso == codigoCurso) {
                                 professor as ProfessorAdjunto
@@ -89,10 +86,7 @@ class DigitalHouseManager {
                                 println("Professor Adjunto foi Alocado.")
                             }
                         }
-                    }
-                }
             }
         }
     }
-
 }

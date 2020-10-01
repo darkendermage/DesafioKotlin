@@ -33,12 +33,10 @@ fun main() {
     adm.matriculaAluno(2, 20002)
     adm.matriculaAluno(3, 20002)
 
-    println("")
-    println("Removendo Curso ********")
+    //Excluindo um curso
     adm.excluiCurso(20001)
 
-    println("")
-    println("Removendo Professor *******")
+    //Removendo professor
     adm.excluiProf(1)
 
 }
