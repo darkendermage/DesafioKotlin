@@ -40,9 +40,7 @@ class DigitalHouseManager {
                         var matricular = Matricula(aluno, curso, Date())
                         matriculas.add(matricular)
                         println("Matrícula realizada com sucesso no curso: ${curso.nome}")
-                    } /*else {
-                        println("Matricula Incompleta no curso: ${c.nome}")
-                    }*/
+                    }
                 }
             }
         }
